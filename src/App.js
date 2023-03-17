@@ -7,7 +7,7 @@ function App() {
       <Header />
       <AddTask />
       <TaskList />
-      <UpdateTask />
+      {/* <UpdateTask /> */}
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table } from "../table";
+import { UpdateTask } from "../updateTask";
 import "./style.css";
 
 const headersList = [
@@ -49,10 +50,32 @@ const tableDatas = [
 ];
 
 export const TaskList = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsOpen((status) => !status);
+  };
+
+  const handleEdit = () => {
+    console.log("handleEdit--");
+    setIsOpen((status) => !status);
+  };
+
+  const handleDelete = () => {
+    console.log("handleDelete--");
+  };
+
   return (
     <div className="taskList">
-      <h1>TaskList</h1>
-      <Table headersList={headersList} tableDatas={tableDatas} />
+      <h2>TaskList</h2>
+      <Table
+        className={"taskListTable"}
+        headersList={headersList}
+        tableDatas={tableDatas}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+      <UpdateTask isOpen={isOpen} handleClose={handleEdit} />
     </div>
   );
 };
