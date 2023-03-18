@@ -1,35 +1,36 @@
 import React from "react";
-import { AddTask } from "../addTask";
 import "./style.css";
 
 export const UpdateTask = (props) => {
   const {
     isOpen = false,
-    handleClose = () => {},
+    handleUpdate = () => {},
     handleChange = () => {},
-    handleSubmit = () => {},
   } = props;
+
   return (
     <>
       {isOpen && (
         <>
           <div className="modalOverlay"></div>
-          <dialogue className="updateTask" true>
+          <dialogue className="updateTask">
             <h1>UpdateTask</h1>
+            <br />
             <div>
               <label>Name</label>
               <br />
               <input type="text" id="name" onChange={handleChange} />
             </div>
+            <br />
             <div>
               <label>Phone Number</label>
               <br />
               <input type="number" id="phoneNumber" onChange={handleChange} />
             </div>
+            <br />
             <div className="btn">
-              <button onClick={handleClose}>Update</button>
+              <button onClick={handleUpdate}>Update</button>
             </div>
-            {/* <button onClick={handleClose}>Close</button> */}
           </dialogue>
         </>
       )}

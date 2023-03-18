@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addContactToList } from "../../redux/slices/contactsSlice";
 import "./style.css";
 
 const initialState = {
@@ -7,6 +9,7 @@ const initialState = {
 };
 
 export const AddTask = () => {
+  const dispatch = useDispatch();
   const [userDetails, setUserDetails] = useState(initialState);
 
   const handleChange = (e) => {
@@ -17,10 +20,14 @@ export const AddTask = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(userDetails);
+    dispatch(addContactToList(userDetails));
+    setUserDetails(initialState);
   };
 
+  const { name = "", phoneNumber = "" } = userDetails;
   //   console.log("userDetails--", userDetails);
   return (
     <div className="addContactCard">
@@ -28,15 +35,27 @@ export const AddTask = () => {
       <div>
         <label>Name</label>
         <br />
-        <input type="text" id="name" onChange={handleChange} />
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={handleChange}
+          autoComplete="off"
+        />
       </div>
       <div>
         <label>Phone Number</label>
         <br />
-        <input type="number" id="phoneNumber" onChange={handleChange} />
+        <input
+          type="number"
+          id="phoneNumber"
+          value={phoneNumber}
+          onChange={handleChange}
+          autoComplete="off"
+        />
       </div>
       <div className="btn">
-        <button onClick={handleSubmit}>Save</button>
+        <button onClick={(e) => handleSubmit(e)}>Save</button>
       </div>
     </div>
   );

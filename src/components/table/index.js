@@ -9,33 +9,41 @@ export const Table = (props) => {
     handleEdit = () => {},
     handleDelete = () => {},
   } = props;
+
   return (
     <>
-      <table className={className}>
-        <thead>
-          <tr>
-            {headersList?.length
-              ? headersList.map((tableHead) => <th>{tableHead.value}</th>)
+      {tableDatas && tableDatas.length ? (
+        <table className={className}>
+          <thead>
+            <tr>
+              {headersList && headersList.length
+                ? headersList.map((tableHead, i) => (
+                    <th key={tableHead.key}>{tableHead.value}</th>
+                  ))
+                : null}
+            </tr>
+          </thead>
+          <tbody>
+            {tableDatas && tableDatas.length
+              ? tableDatas.map((tableData, i) => (
+                  <tr key={tableData.id}>
+                    <td>{i + 1}</td>
+                    <td>{tableData.name}</td>
+                    <td>{tableData.phoneNumber}</td>
+                    <td className="actions">
+                      <button onClick={() => handleEdit(tableData)}>
+                        Edit
+                      </button>
+                      <button onClick={() => handleDelete(tableData)}>
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
               : null}
-          </tr>
-        </thead>
-        <tbody>
-          {tableDatas?.length
-            ? tableDatas.map((tableData) => (
-                <tr>
-                  <td>{tableData.sNo}</td>
-                  <td>{tableData.name}</td>
-                  <td>{tableData.phoneNumber}</td>
-                  {/* <td>{tableData.action}</td> */}
-                  <td className="actions">
-                    <button onClick={handleEdit}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
-                  </td>
-                </tr>
-              ))
-            : null}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      ) : null}
     </>
   );
 };
