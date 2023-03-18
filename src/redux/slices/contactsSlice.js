@@ -11,13 +11,11 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     addContactToList: (state, action) => {
-      //   const id = Math.random() * 1000;
       const id = uuid();
       let contacts = { ...action.payload, id };
       state.contactsList.push(contacts);
     },
     removeContactFromList: (state, action) => {
-      console.log("removeContactFromList action--", action);
       state.contactsList = state.contactsList.filter(
         (contact) => contact.id != action.payload.id
       );

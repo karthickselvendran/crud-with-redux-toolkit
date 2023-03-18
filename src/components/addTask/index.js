@@ -23,6 +23,10 @@ export const AddTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(userDetails);
+    if (!userDetails.name || !userDetails.phoneNumber) {
+      alert("Please enter both name and phone number");
+      return;
+    }
     dispatch(addContactToList(userDetails));
     setUserDetails(initialState);
   };

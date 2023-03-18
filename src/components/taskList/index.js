@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   removeContactFromList,
   setSelectedContact,
+  updateContactInList,
 } from "../../redux/slices/contactsSlice";
 import { Table } from "../table";
 import { UpdateTask } from "../updateTask";
@@ -61,14 +62,17 @@ export const TaskList = () => {
     setIsOpen(true);
   };
 
-  const handleUpdate = () => {
-    console.log("handleUpdate--");
+  const handleUpdate = (contact) => {
+    console.log("handleUpdate--", contact);
+    dispatch(updateContactInList(contact));
     setIsOpen(false);
   };
 
   const handleDelete = (contact) => {
     console.log("handleDelete--", contact);
-    dispatch(removeContactFromList(contact));
+    if (window.confirm("Are you sure want to delete this contact?")) {
+      dispatch(removeContactFromList(contact));
+    }
   };
 
   console.log("contactsList--", contactsList);
@@ -76,7 +80,7 @@ export const TaskList = () => {
     <>
       {contactsList && contactsList.length ? (
         <div className="taskList">
-          <h2>TaskList</h2>
+          <h2>Task List</h2>
           <Table
             className={"taskListTable"}
             headersList={headersList}
