@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, AddTask, TaskList, UpdateTask } from "./components";
+import { Header, AddTask, TaskList } from "./components";
 import "./App.css";
 
 function App() {
@@ -8,7 +8,6 @@ function App() {
       <Header />
       <AddTask />
       <TaskList />
-      {/* <UpdateTask /> */}
     </div>
   );
 }

@@ -28,29 +28,6 @@ const headersList = [
   },
 ];
 
-// const tableDatas = [
-//   {
-//     sNo: "1",
-//     name: "user1",
-//     phoneNumber: "123",
-//   },
-//   {
-//     sNo: "2",
-//     name: "user2",
-//     phoneNumber: "223",
-//   },
-//   {
-//     sNo: "3",
-//     name: "user3",
-//     phoneNumber: "323",
-//   },
-//   {
-//     sNo: "4",
-//     name: "user4",
-//     phoneNumber: "423",
-//   },
-// ];
-
 export const TaskList = () => {
   const dispatch = useDispatch();
   const { contactsList = [] } = useSelector((state) => state.contactsReducer);

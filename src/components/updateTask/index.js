@@ -44,7 +44,7 @@ export const UpdateTask = (props) => {
       {isOpen && (
         <>
           <div className="modalOverlay"></div>
-          <dialogue className="updateTask">
+          <div className="updateTask">
             <h1>UpdateTask</h1>
             <br />
             <div>
@@ -74,7 +74,7 @@ export const UpdateTask = (props) => {
             <div className="btn">
               <button onClick={handleSubmit}>Update</button>
             </div>
-          </dialogue>
+          </div>
         </>
       )}
     </>
